@@ -1,0 +1,78 @@
+.author-carousel {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .carousel-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .carousel-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+  
+  .author-cards {
+    display: flex;
+    gap: 20px;
+    overflow: hidden;
+    width: 90%;
+  }
+  
+  .author-card {
+    flex: 1;
+    text-align: center;
+    max-width: 100px;
+  }
+  
+  .author-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+  }
+  
+  .author-name {
+    margin-top: 10px;
+    font-size: 0.9rem;
+  }
+  
+  .nav-button {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #333;
+  }
+  
+  .nav-button:hover {
+    background-color: #ddd;
+  }
+  
+  .view-all-container {
+    margin-top: 20px;
+  }
+  
+  .view-all-link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .view-all-link:hover {
+    text-decoration: underline;
+  }
+  
