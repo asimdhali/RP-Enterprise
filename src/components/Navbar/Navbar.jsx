@@ -72,7 +72,7 @@ const Navbar = () => {
       className={`text-xl font-extrabold tracking-wide lg:text-2xl 
       }`}
     >
-      RR Enterprise
+      RP Enterprise
     </Link>
   </div>
 

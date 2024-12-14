@@ -7,7 +7,7 @@ const Footer = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Brand Section */}
       <div className="text-center mb-12">
-        <h2 className="text-4xl font-extrabold text-white">RR Enterprise</h2>
+        <h2 className="text-4xl font-extrabold text-white">RP Enterprise</h2>
         <p className="mt-4 text-gray-400">
           Dedicated to delivering excellence in services and customer satisfaction.
         </p>
