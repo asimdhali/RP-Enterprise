@@ -1,6 +1,5 @@
 import React from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import "./AuthorCarousel.css";
 
 const AuthorCarousel = () => {
   const products = [
@@ -8,8 +7,8 @@ const AuthorCarousel = () => {
       id: 1,
       title: "Bagda Chingri",
       img: "https://i.ibb.co.com/xMJ0PX3/cingri.jpg",
-      discountPrice: 1200, // in BDT
-      originalPrice: 1400, // in BDT
+      discountPrice: 1200,
+      originalPrice: 1400,
       amount: "1 kg",
     },
     {
@@ -60,11 +59,10 @@ const AuthorCarousel = () => {
       originalPrice: 190,
       amount: "1 liter",
     },
-    // Add more products if needed
   ];
 
   const [currentIndex, setCurrentIndex] = React.useState(0);
-  const visibleProducts = 5; // Number of products visible at once
+  const visibleProducts = 5;
 
   const handlePrev = () => {
     setCurrentIndex((prevIndex) =>
@@ -79,44 +77,60 @@ const AuthorCarousel = () => {
   };
 
   return (
-    <div className="product-carousel">
-      <h2 className="carousel-title">Popular Products</h2>
-      <div className="carousel-wrapper">
-        <button className="nav-button prev" onClick={handlePrev}>
+    <div className=" mx-auto text-center">
+      <h2 className="text-xl sm:text-2xl font-semibold mb-4">Popular Products</h2>
+      <div className="flex items-center justify-between">
+        <button
+          className="text-2xl text-gray-500 hover:text-gray-800 focus:outline-none"
+          onClick={handlePrev}
+        >
           <FaChevronLeft />
         </button>
-        <div className="product-cards">
+        <div className="flex gap-4 overflow-hidden max-w-full">
           {products
             .slice(currentIndex, currentIndex + visibleProducts)
             .map((product) => (
-              <div key={product.id} className="product-card">
+              <div
+                key={product.id}
+                className="bg-white border border-gray-200 rounded-lg w-40 sm:w-56 h-64 sm:h-80 p-2 sm:p-4 shadow-md flex flex-col justify-between items-center"
+              >
                 <img
                   src={product.img}
                   alt={product.title}
-                  className="product-img"
+                  className="w-full h-24 sm:h-32 object-cover rounded-lg mb-2"
                 />
-                <div className="product-details">
-                  <h3 className="product-title">{product.title}</h3>
-                  <p className="product-amount">{product.amount}</p>
-                  <div className="product-pricing">
-                    <span className="discount-price">
+                <div className="text-center flex flex-col justify-between flex-grow">
+                  <h3 className="text-sm sm:text-lg font-bold truncate mb-2">
+                    {product.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-500 mb-2">{product.amount}</p>
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-sm sm:text-lg font-bold text-green-600">
                       ৳{product.discountPrice}
                     </span>
-                    <span className="original-price">
+                    <span className="text-xs sm:text-sm text-gray-400 line-through">
                       ৳{product.originalPrice}
                     </span>
                   </div>
-                  <button className="add-to-cart-btn">Add to Cart</button>
+                  <button className="bg-blue-500 text-white text-xs sm:text-sm px-2 sm:px-4 py-1 sm:py-2 rounded hover:bg-blue-700">
+                    Add to Cart
+                  </button>
                 </div>
               </div>
             ))}
         </div>
-        <button className="nav-button next" onClick={handleNext}>
+        <button
+          className="text-2xl text-gray-500 hover:text-gray-800 focus:outline-none"
+          onClick={handleNext}
+        >
           <FaChevronRight />
         </button>
       </div>
-      <div className="view-all-container">
-        <a href="/products" className="view-all-link">
+      <div className="mt-4">
+        <a
+          href="/products"
+          className="text-blue-500 hover:underline text-sm font-medium"
+        >
           View All
         </a>
       </div>
