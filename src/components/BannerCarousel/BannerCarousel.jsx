@@ -46,7 +46,7 @@ const BannerCarousel = () => {
 
   // Pause autoplay when user interacts with controls
   const handleInteraction = (callback) => {
-    setIsAutoPlaying(false);
+    // setIsAutoPlaying(false);
     callback();
   };
 
@@ -86,7 +86,7 @@ const BannerCarousel = () => {
       </div>
 
       {/* Slider controls */}
-      <button
+      {/* <button
         type="button"
         className="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
         onClick={() => handleInteraction(handlePrev)}
@@ -133,7 +133,7 @@ const BannerCarousel = () => {
           </svg>
           <span className="sr-only">Next</span>
         </span>
-      </button>
+      </button> */}
     </div>
   );
 };

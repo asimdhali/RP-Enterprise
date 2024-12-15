@@ -11,9 +11,9 @@ const Home = () => {
     <div className="container mx-auto">
       <BannerCarousel></BannerCarousel>
       <ProductCarousel3></ProductCarousel3>
-      <AuthorCarousel></AuthorCarousel>
+      {/* <AuthorCarousel></AuthorCarousel> */}
       <ProductCarousel></ProductCarousel>
-      <PopularPacks></PopularPacks>
+      {/* <PopularPacks></PopularPacks> */}
     </div>
   );
 };
