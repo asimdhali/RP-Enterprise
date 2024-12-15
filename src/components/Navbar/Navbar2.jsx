@@ -6,15 +6,15 @@ const Navbar2 = () => {
       <div className="container mx-auto px-4 flex items-center justify-between h-16">
         {/* Logo */}
         <div className="flex items-center">
-          <img src="https://via.placeholder.com/50x20" alt="Ozon Logo" className="h-6" />
-          <span className="ml-2 text-lg font-bold text-blue-600">Ozon</span>
+          <img src="https://i.ibb.co.com/D5Xk9zb/logo-2.jpg" alt="Ozon Logo" className="h-6" />
+          <span className="ml-2 text-lg font-bold text-blue-600">RP Enterprise</span>
         </div>
 
         {/* Search Bar */}
         <div className="flex items-center flex-grow mx-4">
           <input
             type="text"
-            placeholder="Search on Ozon"
+            placeholder="Search products"
             className="flex-grow px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none"
           />
           <button className="bg-blue-600 text-white px-4 py-2 rounded-r-lg">Search</button>
@@ -32,16 +32,13 @@ const Navbar2 = () => {
       {/* Secondary Navigation */}
       <div className="bg-gray-100">
         <div className="container mx-auto px-4 py-2 flex items-center space-x-4">
-          <a href="#" className="text-gray-600 hover:text-blue-600">Catalog</a>
-          <a href="#" className="text-gray-600 hover:text-blue-600">Tickets, Hotels, Tours</a>
-          <a href="#" className="text-gray-600 hover:text-blue-600">Clothing and Shoes</a>
+          <a href="#" className="text-gray-600 hover:text-blue-600">Food</a>
+          <a href="#" className="text-gray-600 hover:text-blue-600">Beauty</a>
+          <a href="#" className="text-gray-600 hover:text-blue-600">Fashion & Lifestyle</a>
+          <a href="#" className="text-gray-600 hover:text-blue-600">Baby Care</a>
+          <a href="#" className="text-gray-600 hover:text-blue-600">Pharmacy</a>
           <a href="#" className="text-gray-600 hover:text-blue-600">Electronics</a>
-          <a href="#" className="text-gray-600 hover:text-blue-600">Home and Garden</a>
-          <a href="#" className="text-gray-600 hover:text-blue-600">Kids' Products</a>
-          <a href="#" className="text-gray-600 hover:text-blue-600">Deals</a>
-          <a href="#" className="text-gray-600 hover:text-blue-600">Premium</a>
-          <a href="#" className="text-gray-600 hover:text-blue-600">Certificates</a>
-          <a href="#" className="text-gray-600 hover:text-blue-600">Made in Russia</a>
+          <a href="#" className="text-gray-600 hover:text-blue-600">Sports</a>
         </div>
       </div>
     </nav>
