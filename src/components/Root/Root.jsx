@@ -2,6 +2,7 @@ import React, { createContext, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Footer from './../Footer/Footer';
 import Navbar from "../Navbar/Navbar";
+import Navbar2 from "../Navbar/Navbar2";
 
 // Create contexts
 export const CartContext = createContext();
@@ -42,7 +43,8 @@ export default function Root() {
     <WishlistProvider>
       <CartProvider>
         <div>
-          <Navbar></Navbar>
+          {/* <Navbar></Navbar> */}
+          <Navbar2></Navbar2>
           <Outlet></Outlet>
           <Footer></Footer>
         </div>

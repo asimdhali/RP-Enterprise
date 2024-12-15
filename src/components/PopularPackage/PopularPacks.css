@@ -1,0 +1,125 @@
+.product-carousel {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .carousel-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .carousel-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .product-cards {
+    display: flex;
+    gap: 1rem;
+    overflow: hidden;
+  }
+  
+  .product-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 220px; /* Fixed width */
+    height: 340px; /* Fixed height */
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space out content vertically */
+    align-items: center; /* Center-align inner content */
+  }
+  
+  .product-img {
+    width: 100%; /* Ensures consistent image scaling */
+    height: 120px; /* Fixed height for images */
+    object-fit: cover; /* Ensures images maintain aspect ratio */
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .product-details {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+  }
+  
+  .product-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /* Ensures single-line titles */
+  }
+  
+  .product-amount {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+  }
+  
+  .product-pricing {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5rem 0;
+  }
+  
+  .discount-price {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #28a745;
+  }
+  
+  .original-price {
+    font-size: 0.9rem;
+    color: #999;
+    text-decoration: line-through;
+  }
+  
+  .add-to-cart-btn {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+  
+  .add-to-cart-btn:hover {
+    background: #0056b3;
+  }
+  
+  
+  .nav-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  .view-all-container {
+    margin-top: 1rem;
+  }
+  
+  .view-all-link {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .view-all-link:hover {
+    text-decoration: underline;
+  }
+  
