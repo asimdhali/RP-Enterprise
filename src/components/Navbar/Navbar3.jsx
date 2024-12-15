@@ -1,13 +1,27 @@
-import React, { useState } from 'react';
-import { Menu, Search, ShoppingCart, Heart, Package2, User, X } from 'lucide-react';
+import React, { useState } from "react";
+import logo from "../../assets/logopng.png";
+import {
+  Menu,
+  Search,
+  ShoppingCart,
+  Heart,
+  Package2,
+  User,
+  X,
+} from "lucide-react";
 
 const Navbar3 = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const categories = [
-    "Food", "Beauty", "Fashion & Lifestyle", "Baby Care",
-    "Pharmacy", "Electronics", "Sports"
+    "Food",
+    "Beauty",
+    "Fashion & Lifestyle",
+    "Baby Care",
+    "Pharmacy",
+    "Electronics",
+    "Sports",
   ];
 
   return (
@@ -17,13 +31,24 @@ const Navbar3 = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo - Always visible */}
           <div className="flex items-center">
-            <button 
+            <button
               className="p-2 -ml-2 lg:hidden"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
-            <span className="text-xl font-bold text-blue-600 ml-2">RP Enterprise</span>
+            <div className="flex items-center space-x-2">
+              <figure className="flex-shrink-0">
+                <img
+                  src={logo}
+                  alt="RP Enterprise Logo"
+                  className="w-20 h-20 object-contain"
+                />
+              </figure>
+              {/* <span className="text-xl font-bold text-blue-600">
+                RP Enterprise
+              </span> */}
+            </div>
           </div>
 
           {/* Search Bar - Hidden on mobile, visible on larger screens */}
@@ -42,29 +67,41 @@ const Navbar3 = () => {
 
           {/* Icons - Responsive */}
           <div className="flex items-center space-x-4">
-            <button 
+            <button
               className="lg:hidden text-gray-600 hover:text-blue-600"
               onClick={() => setIsSearchOpen(!isSearchOpen)}
             >
               <Search size={24} />
             </button>
-            
-            <a href="#" className="hidden md:flex items-center text-gray-600 hover:text-blue-600">
+
+            <a
+              href="#"
+              className="hidden md:flex items-center text-gray-600 hover:text-blue-600"
+            >
               <User size={24} />
               <span className="ml-1 hidden lg:inline">Account</span>
             </a>
-            
-            <a href="#" className="hidden md:flex items-center text-gray-600 hover:text-blue-600">
+
+            <a
+              href="#"
+              className="hidden md:flex items-center text-gray-600 hover:text-blue-600"
+            >
               <Package2 size={24} />
               <span className="ml-1 hidden lg:inline">Orders</span>
             </a>
-            
-            <a href="#" className="flex items-center text-gray-600 hover:text-blue-600">
+
+            <a
+              href="#"
+              className="flex items-center text-gray-600 hover:text-blue-600"
+            >
               <Heart size={24} />
               <span className="ml-1 hidden lg:inline">Wishlist</span>
             </a>
-            
-            <a href="#" className="flex items-center text-gray-600 hover:text-blue-600">
+
+            <a
+              href="#"
+              className="flex items-center text-gray-600 hover:text-blue-600"
+            >
               <ShoppingCart size={24} />
               <span className="ml-1 hidden lg:inline">Cart</span>
             </a>
