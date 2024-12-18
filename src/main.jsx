@@ -13,6 +13,10 @@ import Statistics from './components/Statistics/Statistics.jsx';
 import Contact from './components/Contact/Contact.jsx';
 import ErrorPage from './components/ErrorPage/ErrorPage.jsx';
 import Account from './components/Account/Account.jsx';
+import Orders from './components/Orders/Orders.jsx';
+import Wishlist from './components/Wishlist/Wishlist.jsx';
+import CartList from './components/Cart/Cart.jsx';
+import CheckoutPage from './components/Checkout/Checkout.jsx';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +35,22 @@ const router = createBrowserRouter([
       {
         path: "/account",
         element: <Account></Account>
+      },
+      {
+        path: "/orders",
+        element: <Orders></Orders>
+      },
+      {
+        path: "/wishlist",
+        element: <Wishlist></Wishlist>
+      },
+      {
+        path: "/cart",
+        element: <CartList></CartList>
+      },
+      {
+        path: "/checkout",
+        element: <CheckoutPage></CheckoutPage>
       },
       {
         path: "products",

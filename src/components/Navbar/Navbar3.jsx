@@ -38,11 +38,12 @@ const Navbar3 = () => {
             </button>
             <div className="flex items-center space-x-2">
               <figure className="flex-shrink-0">
+                <Link to={'/'}>
                 <img
                   src={logo}
                   alt="RP Enterprise Logo"
                   className="w-20 h-20 object-contain"
-                />
+                /></Link>
               </figure>
               {/* <span className="text-xl font-bold text-blue-600">
                 RP Enterprise
@@ -82,29 +83,28 @@ const Navbar3 = () => {
               <span className="ml-1 hidden lg:inline">Account</span>
             </Link>
 
-            <a
-              href="#"
+            <Link
+              to={'/orders'}
               className="hidden md:flex items-center text-gray-600 hover:text-blue-600"
             >
               <Package2 size={24} />
               <span className="ml-1 hidden lg:inline">Orders</span>
-            </a>
+            </Link>
 
-            <a
-              href="#"
+            <Link
+              to={'/wishlist'}
               className="flex items-center text-gray-600 hover:text-blue-600"
             >
               <Heart size={24} />
               <span className="ml-1 hidden lg:inline">Wishlist</span>
-            </a>
+            </Link>
 
-            <a
-              href="#"
+            <Link to={'/cart'}
               className="flex items-center text-gray-600 hover:text-blue-600"
             >
               <ShoppingCart size={24} />
               <span className="ml-1 hidden lg:inline">Cart</span>
-            </a>
+            </Link>
           </div>
         </div>
 

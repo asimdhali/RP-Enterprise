@@ -16,8 +16,7 @@ const Home = () => {
       {/* <AuthorCarousel></AuthorCarousel> */}
       <ProductCarousel></ProductCarousel>
       {/* <PopularPacks></PopularPacks> */}
-      <Practice></Practice>
-      <Account></Account>
+      {/* <Practice></Practice> */}
     </div>
   );
 };
