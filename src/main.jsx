@@ -12,6 +12,7 @@ import Details from './components/Details/Details.jsx';
 import Statistics from './components/Statistics/Statistics.jsx';
 import Contact from './components/Contact/Contact.jsx';
 import ErrorPage from './components/ErrorPage/ErrorPage.jsx';
+import Account from './components/Account/Account.jsx';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "dashboard",
         // element: <Dashboard></Dashboard>
+      },
+      {
+        path: "/account",
+        element: <Account></Account>
       },
       {
         path: "products",

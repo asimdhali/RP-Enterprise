@@ -9,6 +9,7 @@ import {
   User,
   X,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Navbar3 = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -26,10 +27,8 @@ const Navbar3 = () => {
 
   return (
     <nav className="bg-white shadow-lg sticky top-0 z-50">
-      {/* Main Navbar */}
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo - Always visible */}
           <div className="flex items-center">
             <button
               className="p-2 -ml-2 lg:hidden"
@@ -74,13 +73,14 @@ const Navbar3 = () => {
               <Search size={24} />
             </button>
 
-            <a
-              href="#"
+            <Link
+              to="/account"
               className="hidden md:flex items-center text-gray-600 hover:text-blue-600"
+              aria-label="Go to Account"
             >
               <User size={24} />
               <span className="ml-1 hidden lg:inline">Account</span>
-            </a>
+            </Link>
 
             <a
               href="#"
