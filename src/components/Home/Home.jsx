@@ -13,8 +13,14 @@ const Home = () => {
     <div className="container mx-auto">
       <BannerCarousel></BannerCarousel>
       <ProductCarousel3></ProductCarousel3>
+
+
+
+
+
+      
       {/* <AuthorCarousel></AuthorCarousel> */}
-      <ProductCarousel></ProductCarousel>
+      {/* <ProductCarousel></ProductCarousel> */}
       {/* <PopularPacks></PopularPacks> */}
       {/* <Practice></Practice> */}
     </div>

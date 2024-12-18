@@ -45,14 +45,14 @@
   },
   {
     "productID": 5,
-    "productEnName": "Beef",
-    "productBnName": "গরুর মাংস",
+    "productEnName": "Satkhira Shrimp",
+    "productBnName": "চিংড়ি",
     "productUnit": "kg",
-    "productPrice": "750.00",
-    "searchTag": "Beef, Gorur Mangsho",
+    "productPrice": "1400",
+    "searchTag": "Shrimp, Cingri",
     "productStatus": "Active",
-    "productCategory": "Meat",
-    "imageUrl": "https://i.ibb.co.com/5Bp5fCD/beef.jpg"
+    "productCategory": "Fish",
+    "imageUrl": "https://i.ibb.co.com/xMJ0PX3/cingri.jpg"
   },
   {
     "productID": 6,
