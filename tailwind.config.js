@@ -1,3 +1,4 @@
+/* eslint-env node */
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -8,7 +9,7 @@ export default {
     extend: {},
   },
   plugins: [
-    require('daisyui'),
+    // require('daisyui'),
   ],
 }
 
