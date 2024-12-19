@@ -41,15 +41,22 @@ const ProductCarousel3 = () => {
             </div>
             {/* Product Details */}
             <div className="p-4 flex flex-col flex-grow">
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                {product.productEnName}
-              </h3>
+              <span className="flex flex-row justify-center items-center text-center space-x-2">
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                  {product.productEnName}
+                </h3>
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                  ({product.productBnName})
+                </h3>
+              </span>
+
               <div className="flex flex-row justify-between">
-                <p className="text-gray-600 mb-2">{product.productPrice}</p>
+                <p className="text-gray-600 mb-2">{product.discountPrice} tk</p>
                 <p className="text-gray-600 mb-2 line-through">
-                  {product.productPrice}
+                  {product.originalPrice} tk
                 </p>
               </div>
+              <div className="text-center">{product.productUnit}</div>
 
               {/* Add to Cart Button */}
               <button className="mt-auto w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition-colors duration-300">
