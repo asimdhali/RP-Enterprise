@@ -5,7 +5,6 @@ const CartList = () => {
   const { cart, removeFromCart, updateQuantity } = useContext(CartContext);
   const [totalAmount, setTotalAmount] = useState(0);
 
-  // Update total amount whenever the cart changes
   useEffect(() => {
     const total = cart.reduce(
       (sum, item) => sum + item.discountPrice * item.quantity,
@@ -14,15 +13,12 @@ const CartList = () => {
     setTotalAmount(total);
   }, [cart]);
 
-  // Proceed to checkout functionality
   const handleCheckout = () => {
     if (cart.length === 0) {
       alert("Your cart is empty! Add items before proceeding to checkout.");
       return;
     }
-    // Redirect to checkout page or handle checkout process
     alert(`Proceeding to checkout. Total: ${totalAmount.toFixed(2)} tk`);
-    // You can replace this alert with navigation or functionality
   };
 
   return (
@@ -35,7 +31,7 @@ const CartList = () => {
           <div className="space-y-4">
             {cart.map((item) => (
               <div
-                key={item.productID} // Use productID for consistency with your JSON structure
+                key={item.productID} 
                 className="bg-white rounded-lg shadow-md overflow-hidden flex items-center p-4"
               >
                 <img
@@ -78,14 +74,12 @@ const CartList = () => {
 
           
 
-          {/* Total Amount Section */}
           <div className="mt-4 p-4 bg-gray-100 rounded-lg shadow-md text-right">
             <h3 className="text-xl font-bold">
               Total: <span className="text-green-600">{totalAmount.toFixed(2)} tk</span>
             </h3>
           </div>
 
-          {/* Proceed to Checkout Button */}
           <div className="mt-6 flex justify-end">
             <button
               onClick={handleCheckout}

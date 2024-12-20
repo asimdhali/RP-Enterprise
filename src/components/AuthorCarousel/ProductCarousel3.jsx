@@ -6,13 +6,12 @@ import "react-toastify/dist/ReactToastify.css";
 
 const ProductCarousel3 = () => {
   const [productsData, setProductsData] = useState([]);
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
-    // Load products data on component mount
     setProductsData(productsJson);
   }, []);
 
-  const { addToCart } = useContext(CartContext);
 
   const handleAddToCart = (product) => {
     const isAdded = addToCart(product);
@@ -22,13 +21,13 @@ const ProductCarousel3 = () => {
       toast.warn(`${product.productEnName} is already in the cart!`);
     }
   };
+  
+
 
   return (
     <div className="w-full mx-auto px-4 py-8">
-      {/* Toast Container */}
       <ToastContainer position="top-center" autoClose={3000} />
 
-      {/* Header Section */}
       <div className="mb-8 flex justify-between items-center">
         <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
           Popular Products

@@ -40,7 +40,7 @@ Check out the live version of the website here: [Live Link](https://rp-enterpris
 2. **Product Page**  
    *Detailed view of a grocery product with price and description.*  
 
-   ![Product Page Screenshot](#)
+   ![Product Page Screenshot](https://i.ibb.co.com/Q9gZVkn/ss-20-12-24.jpg)
 
 3. **Cart & Checkout**  
    *Secure and easy-to-use checkout process.*  

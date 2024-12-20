@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { FaCartArrowDown } from "react-icons/fa";
 import logo from "../../assets/logopng.png";
 import {
   Menu,
@@ -10,10 +11,14 @@ import {
   X,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { CartContext } from "../Root/Root";
 
 const Navbar3 = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  const { cartCount } = useContext(CartContext);
+  console.log(cartCount)
 
   const categories = [
     "Food",
@@ -38,12 +43,13 @@ const Navbar3 = () => {
             </button>
             <div className="flex items-center space-x-2">
               <figure className="flex-shrink-0">
-                <Link to={'/'}>
-                <img
-                  src={logo}
-                  alt="RP Enterprise Logo"
-                  className="w-20 h-20 object-contain"
-                /></Link>
+                <Link to={"/"}>
+                  <img
+                    src={logo}
+                    alt="RP Enterprise Logo"
+                    className="w-20 h-20 object-contain"
+                  />
+                </Link>
               </figure>
               {/* <span className="text-xl font-bold text-blue-600">
                 RP Enterprise
@@ -74,6 +80,38 @@ const Navbar3 = () => {
               <Search size={24} />
             </button>
 
+            {/* <Link
+              to={'/orders'}
+              className="hidden md:flex items-center text-gray-600 hover:text-blue-600"
+            >
+              <Package2 size={24} />
+              <span className="ml-1 hidden lg:inline">Orders</span>
+            </Link> */}
+
+            {/* <Link
+              to={'/wishlist'}
+              className="flex items-center text-gray-600 hover:text-blue-600"
+            >
+              <Heart size={24} />
+              <span className="ml-1 hidden lg:inline">Wishlist</span>
+            </Link> */}
+
+            <Link
+              to="/cart"
+              className="relative flex items-center text-gray-600 hover:text-blue-600"
+              aria-label="View Cart"
+            >
+              <ShoppingCart size={24} />
+              <span
+                className="absolute -top-2 -right-2 bg-[#4a00ff] text-white rounded-full text-xs w-5 h-5 flex items-center justify-center"
+                aria-label={`Cart count: ${cartCount}`}
+              >
+                {cartCount}
+                
+              </span>
+              <span className="ml-1 hidden lg:inline">Cart</span>
+            </Link>
+
             <Link
               to="/account"
               className="hidden md:flex items-center text-gray-600 hover:text-blue-600"
@@ -81,29 +119,6 @@ const Navbar3 = () => {
             >
               <User size={24} />
               <span className="ml-1 hidden lg:inline">Account</span>
-            </Link>
-
-            <Link
-              to={'/orders'}
-              className="hidden md:flex items-center text-gray-600 hover:text-blue-600"
-            >
-              <Package2 size={24} />
-              <span className="ml-1 hidden lg:inline">Orders</span>
-            </Link>
-
-            <Link
-              to={'/wishlist'}
-              className="flex items-center text-gray-600 hover:text-blue-600"
-            >
-              <Heart size={24} />
-              <span className="ml-1 hidden lg:inline">Wishlist</span>
-            </Link>
-
-            <Link to={'/cart'}
-              className="flex items-center text-gray-600 hover:text-blue-600"
-            >
-              <ShoppingCart size={24} />
-              <span className="ml-1 hidden lg:inline">Cart</span>
             </Link>
           </div>
         </div>

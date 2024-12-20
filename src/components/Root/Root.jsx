@@ -1,38 +1,45 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useContext } from "react";
 import { Outlet } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import Navbar3 from "../Navbar/Navbar3"; // Ensure this path is correct
 
-// Create contexts
+// Create Cart Context
 export const CartContext = createContext();
-export const WishlistContext = createContext();
 
-// Define CartProvider
+// CartProvider Component
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
+  // Add to Cart Function
   const addToCart = (product) => {
     let isAdded = false;
     setCart((prevCart) => {
       const existingProduct = prevCart.find(
         (item) => item.productID === product.productID
       );
-
+  
       if (existingProduct) {
-        // If product already exists, return the cart unchanged
+        // Product already exists, no changes to the cart
         return prevCart;
+      } else {
+        isAdded = true; // New product added
+        return [...prevCart, { ...product, quantity: 1 }];
       }
-
-      isAdded = true; // New product added
-    return [...prevCart, { ...product, quantity: 1 }];
     });
+  
+    // Return whether the product was added
     return isAdded;
   };
+  
 
+  // Remove from Cart Function
   const removeFromCart = (productId) => {
-    setCart((prevCart) => prevCart.filter((item) => item.productID !== productId));
+    setCart((prevCart) =>
+      prevCart.filter((item) => item.productID !== productId)
+    );
   };
 
+  // Update Quantity Function
   const updateQuantity = (productId, newQuantity) => {
     setCart((prevCart) =>
       prevCart.map((item) =>
@@ -43,20 +50,31 @@ export const CartProvider = ({ children }) => {
     );
   };
 
+  // Cart Count
+  const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity }}>
+    <CartContext.Provider
+      value={{ cart, addToCart, removeFromCart, updateQuantity, cartCount }}
+    >
       {children}
     </CartContext.Provider>
   );
 };
 
-// Define WishlistProvider
+// Wishlist Context
+export const WishlistContext = createContext();
+
+// WishlistProvider Component
 export const WishlistProvider = ({ children }) => {
   const [wCart, setWCart] = useState([]);
 
+  // Add to Wishlist Function
   const addToWishlist = (item) => {
     setWCart((prevWCart) => {
-      const existingItem = prevWCart.find((wishlistItem) => wishlistItem.id === item.id);
+      const existingItem = prevWCart.find(
+        (wishlistItem) => wishlistItem.id === item.id
+      );
 
       if (existingItem) {
         return prevWCart; // Avoid duplicates
@@ -66,8 +84,11 @@ export const WishlistProvider = ({ children }) => {
     });
   };
 
+  // Remove from Wishlist Function
   const removeFromWishlist = (itemId) => {
-    setWCart((prevWCart) => prevWCart.filter((item) => item.id !== itemId));
+    setWCart((prevWCart) =>
+      prevWCart.filter((item) => item.id !== itemId)
+    );
   };
 
   return (
@@ -77,12 +98,12 @@ export const WishlistProvider = ({ children }) => {
   );
 };
 
+// Root Component
 export default function Root() {
   return (
     <WishlistProvider>
       <CartProvider>
         <div>
-          {/* Navbar3 is being used; if switching Navbars dynamically, ensure routing works */}
           <Navbar3 />
           <Outlet />
           <Footer />
