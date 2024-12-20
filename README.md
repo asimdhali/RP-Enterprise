@@ -17,7 +17,7 @@ Welcome to our **RP Enterprise**, a dedicated platform for buying and selling fr
 
 ## 🚀 Live Link
 
-Check out the live version of the website here: [Grocery Buy-Sell Website](https://rp-enterprise-khulna.vercel.app/)
+Check out the live version of the website here: [Live Link](https://rp-enterprise-khulna.vercel.app/)
 
 ---
 
