@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import Navbar3 from "../Navbar/Navbar3"; // Ensure this path is correct
@@ -8,7 +8,24 @@ export const CartContext = createContext();
 
 // CartProvider Component
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() => {
+    const savedCart = localStorage.getItem("cart");
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
+  const [activeProductIds, setActiveProductIds] = useState(() => {
+    const savedActiveProductIds = localStorage.getItem("activeProductIds");
+    return savedActiveProductIds ? JSON.parse(savedActiveProductIds) : [];
+  });
+  const [initialCartCount, setInitialCartCount] = useState(() => {
+    const savedInitialCartCount = localStorage.getItem("initialCartCount");
+    return savedInitialCartCount ? JSON.parse(savedInitialCartCount) : 0;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("activeProductIds", JSON.stringify(activeProductIds));
+    localStorage.setItem("initialCartCount", JSON.stringify(initialCartCount));
+  }, [cart, activeProductIds, initialCartCount]);
 
   // Add to Cart Function
   const addToCart = (product) => {
@@ -23,6 +40,8 @@ export const CartProvider = ({ children }) => {
         return prevCart;
       } else {
         isAdded = true; // New product added
+        setActiveProductIds((prev) => [...prev, product.productID]);
+        setInitialCartCount((prev) => prev + 1);
         return [...prevCart, { ...product, quantity: 1 }];
       }
     });
@@ -37,6 +56,8 @@ export const CartProvider = ({ children }) => {
     setCart((prevCart) =>
       prevCart.filter((item) => item.productID !== productId)
     );
+    setActiveProductIds((prev) => prev.filter((id) => id !== productId));
+    setInitialCartCount((prev) => prev - 1);
   };
 
   // Update Quantity Function
@@ -55,7 +76,7 @@ export const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, updateQuantity, cartCount }}
+      value={{ cart, addToCart, removeFromCart, updateQuantity, cartCount, initialCartCount, activeProductIds }}
     >
       {children}
     </CartContext.Provider>

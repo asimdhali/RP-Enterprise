@@ -21,6 +21,22 @@ const CartList = () => {
     alert(`Proceeding to checkout. Total: ${totalAmount.toFixed(2)} tk`);
   };
 
+  const handleIncreaseQuantity = (productId) => {
+    const product = cart.find((item) => item.productID === productId);
+    if (product && product.quantity < 5) {
+      updateQuantity(productId, product.quantity + 1);
+    }
+  };
+
+  const handleDecreaseQuantity = (productId) => {
+    const product = cart.find((item) => item.productID === productId);
+    if (product && product.quantity > 1) {
+      updateQuantity(productId, product.quantity - 1);
+    } else if (product && product.quantity === 1) {
+      removeFromCart(productId);
+    }
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
       <h2 className="text-2xl font-bold mb-6">Your Cart</h2>
@@ -46,21 +62,22 @@ const CartList = () => {
                     <span className="text-gray-600">Price: </span>
                     {item.discountPrice} tk
                   </p>
-                  <p>
+                  <div className="flex items-center space-x-2">
                     <span className="text-gray-600">Quantity: </span>
-                    <input
-                      type="number"
-                      min="1"
-                      value={item.quantity}
-                      onChange={(e) =>
-                        updateQuantity(
-                          item.productID,
-                          Math.max(1, parseInt(e.target.value, 10))
-                        )
-                      }
-                      className="w-12 text-center border rounded"
-                    />
-                  </p>
+                    <button
+                      onClick={() => handleDecreaseQuantity(item.productID)}
+                      className="bg-gray-300 text-gray-800 py-1 px-3 rounded hover:bg-gray-400 transition-colors duration-300"
+                    >
+                      -
+                    </button>
+                    <span>{item.quantity}</span>
+                    <button
+                      onClick={() => handleIncreaseQuantity(item.productID)}
+                      className="bg-gray-300 text-gray-800 py-1 px-3 rounded hover:bg-gray-400 transition-colors duration-300"
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
                 <button
                   onClick={() => removeFromCart(item.productID)}

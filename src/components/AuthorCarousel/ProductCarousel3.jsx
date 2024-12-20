@@ -6,12 +6,11 @@ import "react-toastify/dist/ReactToastify.css";
 
 const ProductCarousel3 = () => {
   const [productsData, setProductsData] = useState([]);
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, updateQuantity, removeFromCart, activeProductIds, cart } = useContext(CartContext);
 
   useEffect(() => {
     setProductsData(productsJson);
   }, []);
-
 
   const handleAddToCart = (product) => {
     const isAdded = addToCart(product);
@@ -21,8 +20,22 @@ const ProductCarousel3 = () => {
       toast.warn(`${product.productEnName} is already in the cart!`);
     }
   };
-  
 
+  const handleIncreaseQuantity = (productId) => {
+    const product = cart.find((item) => item.productID === productId);
+    if (product && product.quantity < 5) {
+      updateQuantity(productId, product.quantity + 1);
+    }
+  };
+
+  const handleDecreaseQuantity = (productId) => {
+    const product = cart.find((item) => item.productID === productId);
+    if (product && product.quantity > 1) {
+      updateQuantity(productId, product.quantity - 1);
+    } else if (product && product.quantity === 1) {
+      removeFromCart(productId);
+    }
+  };
 
   return (
     <div className="w-full mx-auto px-4 py-8">
@@ -44,7 +57,7 @@ const ProductCarousel3 = () => {
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {productsData.slice(0, 20).map((product) => (
           <div
-            key={product.id}
+            key={product.productID}
             className="bg-white rounded-lg shadow-md overflow-hidden h-[400px] flex flex-col"
           >
             {/* Product Image */}
@@ -77,10 +90,29 @@ const ProductCarousel3 = () => {
               {/* Add to Cart Button */}
               <button
                 onClick={() => handleAddToCart(product)}
-                className="mt-auto w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition-colors duration-300"
+                className={`mt-auto w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition-colors duration-300 ${
+                  activeProductIds.includes(product.productID) && cart.find((item) => item.productID === product.productID)?.quantity > 0 ? "hidden" : ""
+                }`}
               >
                 Add to Cart
               </button>
+              {activeProductIds.includes(product.productID) && cart.find((item) => item.productID === product.productID)?.quantity > 0 && (
+                <div className="mt-auto flex justify-between items-center">
+                  <button
+                    onClick={() => handleDecreaseQuantity(product.productID)}
+                    className="bg-gray-300 text-gray-800 py-1 px-3 rounded hover:bg-gray-400 transition-colors duration-300"
+                  >
+                    -
+                  </button>
+                  <span>{cart.find((item) => item.productID === product.productID)?.quantity || 1}</span>
+                  <button
+                    onClick={() => handleIncreaseQuantity(product.productID)}
+                    className="bg-gray-300 text-gray-800 py-1 px-3 rounded hover:bg-gray-400 transition-colors duration-300"
+                  >
+                    +
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         ))}

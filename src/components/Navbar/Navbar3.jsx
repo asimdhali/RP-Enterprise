@@ -17,8 +17,7 @@ const Navbar3 = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
-  const { cartCount } = useContext(CartContext);
-  console.log(cartCount)
+  const { initialCartCount } = useContext(CartContext);
 
   const categories = [
     "Food",
@@ -104,9 +103,9 @@ const Navbar3 = () => {
               <ShoppingCart size={24} />
               <span
                 className="absolute -top-2 -right-2 bg-[#4a00ff] text-white rounded-full text-xs w-5 h-5 flex items-center justify-center"
-                aria-label={`Cart count: ${cartCount}`}
+                aria-label={`Cart count: ${initialCartCount}`}
               >
-                {cartCount}
+                {initialCartCount}
                 
               </span>
               <span className="ml-1 hidden lg:inline">Cart</span>
