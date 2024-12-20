@@ -17,6 +17,7 @@ import Orders from './components/Orders/Orders.jsx';
 import Wishlist from './components/Wishlist/Wishlist.jsx';
 import CartList from './components/Cart/Cart.jsx';
 import CheckoutPage from './components/Checkout/Checkout.jsx';
+import AccountEdit from './components/Account/AccountEdit.jsx';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/account",
         element: <Account></Account>
+      },
+      {
+        path: "/account/edit",
+        element: <AccountEdit></AccountEdit>
       },
       {
         path: "/orders",
