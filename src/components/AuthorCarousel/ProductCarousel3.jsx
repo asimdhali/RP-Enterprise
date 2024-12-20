@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import productsJson from "../../../public/productData.json";
+import { CartContext } from "../Root/Root";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProductCarousel3 = () => {
   const [productsData, setProductsData] = useState([]);
@@ -9,8 +12,22 @@ const ProductCarousel3 = () => {
     setProductsData(productsJson);
   }, []);
 
+  const { addToCart } = useContext(CartContext);
+
+  const handleAddToCart = (product) => {
+    const isAdded = addToCart(product);
+    if (isAdded) {
+      toast.success(`${product.productEnName} added to cart!`);
+    } else {
+      toast.warn(`${product.productEnName} is already in the cart!`);
+    }
+  };
+
   return (
     <div className="w-full mx-auto px-4 py-8">
+      {/* Toast Container */}
+      <ToastContainer position="top-center" autoClose={3000} />
+
       {/* Header Section */}
       <div className="mb-8 flex justify-between items-center">
         <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
@@ -59,7 +76,10 @@ const ProductCarousel3 = () => {
               <div className="text-center">{product.productUnit}</div>
 
               {/* Add to Cart Button */}
-              <button className="mt-auto w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition-colors duration-300">
+              <button
+                onClick={() => handleAddToCart(product)}
+                className="mt-auto w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition-colors duration-300"
+              >
                 Add to Cart
               </button>
             </div>
