@@ -17,8 +17,8 @@ export const CartProvider = ({ children }) => {
     return savedActiveProductIds ? JSON.parse(savedActiveProductIds) : [];
   });
   const [initialCartCount, setInitialCartCount] = useState(() => {
-    const savedInitialCartCount = localStorage.getItem("initialCartCount");
-    return savedInitialCartCount ? JSON.parse(savedInitialCartCount) : 0;
+    const savedCart = localStorage.getItem("cart");
+    return savedCart ? JSON.parse(savedCart).length : 0;
   });
 
   useEffect(() => {
@@ -53,11 +53,15 @@ export const CartProvider = ({ children }) => {
 
   // Remove from Cart Function
   const removeFromCart = (productId) => {
-    setCart((prevCart) =>
-      prevCart.filter((item) => item.productID !== productId)
-    );
+    setCart((prevCart) => {
+      const updatedCart = prevCart.filter((item) => item.productID !== productId);
+      if (updatedCart.length === 0) {
+        setInitialCartCount(0);
+      }
+      return updatedCart;
+    });
     setActiveProductIds((prev) => prev.filter((id) => id !== productId));
-    setInitialCartCount((prev) => prev - 1);
+    setInitialCartCount((prev) => Math.max(prev - 1, 0));
   };
 
   // Update Quantity Function
@@ -76,7 +80,7 @@ export const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, updateQuantity, cartCount, initialCartCount, activeProductIds }}
+      value={{ cart, addToCart, removeFromCart, updateQuantity, cartCount, initialCartCount, activeProductIds, setCart, setInitialCartCount }}
     >
       {children}
     </CartContext.Provider>

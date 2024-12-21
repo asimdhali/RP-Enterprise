@@ -7,10 +7,10 @@ import {
 } from "react-router-dom";
 import Root from './components/Root/Root.jsx';
 import Home from './components/Home/Home.jsx';
-import Dashboard from './components/Dashboard/Dashboard.jsx';
-import Details from './components/Details/Details.jsx';
-import Statistics from './components/Statistics/Statistics.jsx';
-import Contact from './components/Contact/Contact.jsx';
+// import Dashboard from './components/Dashboard/Dashboard.jsx';
+// import Details from './components/Details/Details.jsx';
+// import Statistics from './components/Statistics/Statistics.jsx';
+// import Contact from './components/Contact/Contact.jsx';
 import ErrorPage from './components/ErrorPage/ErrorPage.jsx';
 import Account from './components/Account/Account.jsx';
 import Orders from './components/Orders/Orders.jsx';
@@ -65,17 +65,17 @@ const router = createBrowserRouter([
         path: "contact",
         // element: <Contact></Contact>,
       },
-      {
-        path: "/details/:id",
-        element: <Details></Details>,
-        loader: async () => {
-          const response = await fetch("gadgetsData.json");
-          if(!response.ok) {
-            throw new Error("Failed to fetch gadgets data");
-          }
-          return response.json();
-        }
-      }
+      // {
+      //   path: "/details/:id",
+      //   element: <Details></Details>,
+      //   loader: async () => {
+      //     const response = await fetch("gadgetsData.json");
+      //     if(!response.ok) {
+      //       throw new Error("Failed to fetch gadgets data");
+      //     }
+      //     return response.json();
+      //   }
+      // }
     ]
   },
 ]);

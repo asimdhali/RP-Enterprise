@@ -101,23 +101,24 @@ const Navbar3 = () => {
               aria-label="View Cart"
             >
               <ShoppingCart size={24} />
-              <span
-                className="absolute -top-2 -right-2 bg-[#4a00ff] text-white rounded-full text-xs w-5 h-5 flex items-center justify-center"
-                aria-label={`Cart count: ${initialCartCount}`}
-              >
-                {initialCartCount}
-                
-              </span>
+              {initialCartCount > 0 && (
+                <span
+                  className="absolute -top-3 -right-3 bg-[#4a00ff] text-white rounded-full text-xs w-5 h-5 flex items-center justify-center"
+                  aria-label={`Cart count: ${initialCartCount}`}
+                >
+                  {initialCartCount}
+                </span>
+              )}
               <span className="ml-1 hidden lg:inline">Cart</span>
             </Link>
 
             <Link
               to="/account"
-              className="hidden md:flex items-center text-gray-600 hover:text-blue-600"
+              className="items-center flex text-gray-600 hover:text-blue-600"
               aria-label="Go to Account"
             >
               <User size={24} />
-              <span className="ml-1 hidden lg:inline">Account</span>
+              <span className="ml-1 hidden lg:inline ">Account</span>
             </Link>
           </div>
         </div>

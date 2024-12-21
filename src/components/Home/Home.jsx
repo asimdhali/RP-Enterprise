@@ -1,10 +1,10 @@
-import Account from "../Account/Account";
-import AuthorCarousel from "../AuthorCarousel/AuthorCarousel";
-import ProductCarousel from "../AuthorCarousel/ProductCarousel2";
+// import Account from "../Account/Account";
+// import AuthorCarousel from "../AuthorCarousel/AuthorCarousel";
+// import ProductCarousel from "../AuthorCarousel/ProductCarousel2";
 import ProductCarousel3 from "../AuthorCarousel/ProductCarousel3";
 import BannerCarousel from "../BannerCarousel/BannerCarousel";
-import PopularPacks from "../PopularPackage/PopularPacks";
-import Practice from "../Practice/Practice";
+// import PopularPacks from "../PopularPackage/PopularPacks";
+// import Practice from "../Practice/Practice";
 
 
 const Home = () => {

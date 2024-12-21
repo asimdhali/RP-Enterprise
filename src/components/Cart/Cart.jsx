@@ -1,8 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
 import { CartContext } from "../Root/Root";
+import { Link } from "react-router-dom";
 
 const CartList = () => {
-  const { cart, removeFromCart, updateQuantity } = useContext(CartContext);
+  const { cart, removeFromCart, updateQuantity, setCart, setInitialCartCount } = useContext(CartContext);
   const [totalAmount, setTotalAmount] = useState(0);
 
   useEffect(() => {
@@ -37,9 +38,27 @@ const CartList = () => {
     }
   };
 
+  const handleClearCart = () => {
+    setCart([]);
+    setInitialCartCount(0);
+    localStorage.removeItem("cart");
+    localStorage.removeItem("activeProductIds");
+    localStorage.removeItem("initialCartCount");
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
-      <h2 className="text-2xl font-bold mb-6">Your Cart</h2>
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-2xl font-bold">Your Cart</h2>
+        {cart.length > 0 && (
+          <button
+            onClick={handleClearCart}
+            className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors duration-300"
+          >
+            Clear
+          </button>
+        )}
+      </div>
       {cart.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
@@ -78,6 +97,9 @@ const CartList = () => {
                       +
                     </button>
                   </div>
+                  <p className="mt-2 text-gray-600">
+                    Total: {item.discountPrice * item.quantity} tk
+                  </p>
                 </div>
                 <button
                   onClick={() => removeFromCart(item.productID)}
@@ -89,8 +111,6 @@ const CartList = () => {
             ))}
           </div>
 
-          
-
           <div className="mt-4 p-4 bg-gray-100 rounded-lg shadow-md text-right">
             <h3 className="text-xl font-bold">
               Total: <span className="text-green-600">{totalAmount.toFixed(2)} tk</span>
@@ -98,12 +118,12 @@ const CartList = () => {
           </div>
 
           <div className="mt-6 flex justify-end">
-            <button
+            <Link to={'/checkout'}
               onClick={handleCheckout}
               className="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition-colors duration-300"
             >
               Proceed to Checkout
-            </button>
+            </Link>
           </div>
         </>
       )}
