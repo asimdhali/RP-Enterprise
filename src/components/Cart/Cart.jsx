@@ -14,14 +14,6 @@ const CartList = () => {
     setTotalAmount(total);
   }, [cart]);
 
-  const handleCheckout = () => {
-    if (cart.length === 0) {
-      alert("Your cart is empty! Add items before proceeding to checkout.");
-      return;
-    }
-    alert(`Proceeding to checkout. Total: ${totalAmount.toFixed(2)} tk`);
-  };
-
   const handleIncreaseQuantity = (productId) => {
     const product = cart.find((item) => item.productID === productId);
     if (product && product.quantity < 5) {
@@ -119,7 +111,6 @@ const CartList = () => {
 
           <div className="mt-6 flex justify-end">
             <Link to={'/checkout'}
-              onClick={handleCheckout}
               className="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition-colors duration-300"
             >
               Proceed to Checkout

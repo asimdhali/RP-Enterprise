@@ -1,54 +1,32 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Package2, CreditCard, ShoppingBag } from 'lucide-react';
+import { CartContext } from '../Root/Root';
 
 const CheckoutPage = () => {
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      title: "Bagda Chingri",
-      img: "https://i.ibb.co.com/xMJ0PX3/cingri.jpg",
-      price: 1200,
-      quantity: 1,
-    },
-    {
-      id: 2,
-      title: "Palon Shak",
-      img: "https://i.ibb.co.com/7yJ67Tm/palonshak.jpg",
-      price: 30,
-      quantity: 2,
-    },
-    {
-      id: 3,
-      title: "Kakra",
-      img: "https://i.ibb.co.com/MBY5Cct/kakra.jpg",
-      price: 350,
-      quantity: 1,
-    },
-  ]);
-
+  const { cart } = useContext(CartContext);
   const [userDetails, setUserDetails] = useState({
     name: '',
     email: '',
     address: '',
-    phone: '',
+    phone: ''
   });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setUserDetails((prevDetails) => ({
       ...prevDetails,
-      [name]: value,
+      [name]: value
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Order submitted:', { userDetails, cartItems });
+    console.log('Order submitted:', { userDetails, cart });
     alert("Order Submitted Successfully!");
   };
 
   const calculateSubtotal = () => {
-    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+    return cart.reduce((total, item) => total + item.discountPrice * item.quantity, 0);
   };
 
   const shippingCost = 60;
@@ -66,22 +44,22 @@ const CheckoutPage = () => {
                 <h2 className="text-xl font-semibold">Order Summary</h2>
               </div>
               <div className="space-y-4">
-                {cartItems.map((item) => (
-                  <div key={item.id} className="flex items-center space-x-4 py-4 border-b last:border-0">
+                {cart.map((item) => (
+                  <div key={item.productID} className="flex items-center space-x-4 py-4 border-b last:border-0">
                     <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md">
                       <img
-                        src={item.img}
-                        alt={item.title}
+                        src={item.imageUrl}
+                        alt={item.productEnName}
                         className="h-full w-full object-cover object-center"
                       />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-lg font-medium text-gray-900">{item.title}</h3>
+                      <h3 className="text-lg font-medium text-gray-900">{item.productEnName}</h3>
                       <p className="mt-1 text-sm text-gray-600">Quantity: {item.quantity}</p>
-                      <p className="mt-1 text-sm text-gray-600">Price: ৳{item.price}</p>
+                      <p className="mt-1 text-sm text-gray-600">Price: ৳{item.discountPrice}</p>
                     </div>
                     <div className="text-right">
-                      <p className="text-lg font-medium text-gray-900">৳{item.price * item.quantity}</p>
+                      <p className="text-lg font-medium text-gray-900">৳{item.discountPrice * item.quantity}</p>
                     </div>
                   </div>
                 ))}
