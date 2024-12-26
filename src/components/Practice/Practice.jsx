@@ -16,6 +16,9 @@ const Practice = () => {
                 <button onClick={() => setCount((count) => count + 1)}>
                     Practice count is {count}
                 </button>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima id assumenda debitis nihil adipisci error quia atque possimus quam animi, ipsum mollitia dolores ab velit temporibus odit voluptatibus iste itaque repellat? Totam neque dolore iste est quisquam vitae, animi tempora doloribus voluptate, molestias laudantium nemo commodi officia, eos exercitationem ipsa? kdk kdk dkd kd 
+                </p>
             </CountContext.Provider>
         </div>
     );
