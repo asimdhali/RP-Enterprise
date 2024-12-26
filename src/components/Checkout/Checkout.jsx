@@ -11,6 +11,7 @@ const CheckoutPage = () => {
     phone: "",
   });
   const [currentStep, setCurrentStep] = useState(1);
+  const [paymentMethod, setPaymentMethod] = useState("Bkash");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -34,7 +35,7 @@ const CheckoutPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Order submitted:", { userDetails, cart });
+    console.log("Order submitted:", { userDetails, cart, paymentMethod });
     alert("Order Submitted Successfully!");
   };
 
@@ -112,6 +113,8 @@ const CheckoutPage = () => {
               total={grandTotal}
               onPrevious={handlePreviousStep}
               onNext={handleNextStep}
+              paymentMethod={paymentMethod}
+              setPaymentMethod={setPaymentMethod}
             />
           )}
 
@@ -195,16 +198,18 @@ const StepOne = ({ userDetails, onChange, onNext }) => (
         />
       </form>
     </div>
-    <NavigationButtons onNext={onNext} />
+    <NavigationButtons onNext={onNext} disablePrevious={true} />
   </div>
 );
 
-const StepTwo = ({ subtotal, shippingCost, total, onPrevious, onNext }) => (
+const StepTwo = ({ subtotal, shippingCost, total, onPrevious, onNext, paymentMethod, setPaymentMethod }) => (
   <div className="lg:w-1/3 mx-auto">
     <PaymentSummary
       subtotal={subtotal}
       shippingCost={shippingCost}
       total={total}
+      paymentMethod={paymentMethod}
+      setPaymentMethod={setPaymentMethod}
     />
     <NavigationButtons onPrevious={onPrevious} onNext={onNext} />
   </div>
@@ -264,7 +269,7 @@ const InputField = ({ label, id, name, value, onChange, type = "text", required 
   </div>
 );
 
-const PaymentSummary = ({ subtotal, shippingCost, total }) => (
+const PaymentSummary = ({ subtotal, shippingCost, total, paymentMethod, setPaymentMethod }) => (
   <div className="bg-white rounded-lg shadow-md p-6 lg:sticky lg:top-8">
     <div className="flex items-center gap-2 mb-6">
       <CreditCard className="w-5 h-5" />
@@ -281,6 +286,33 @@ const PaymentSummary = ({ subtotal, shippingCost, total }) => (
           isBlue={true}
         />
       </div>
+      <div className="mt-4">
+        <label className="block text-sm font-medium text-gray-700 mb-2">Payment Method</label>
+        <div className="flex items-center mb-2">
+          <input
+            type="radio"
+            id="bkash"
+            name="paymentMethod"
+            value="Bkash"
+            checked={paymentMethod === "Bkash"}
+            onChange={(e) => setPaymentMethod(e.target.value)}
+            className="mr-2"
+          />
+          <label htmlFor="bkash" className="text-gray-700">Bkash Payment</label>
+        </div>
+        <div className="flex items-center">
+          <input
+            type="radio"
+            id="cod"
+            name="paymentMethod"
+            value="COD"
+            checked={paymentMethod === "COD"}
+            onChange={(e) => setPaymentMethod(e.target.value)}
+            className="mr-2"
+          />
+          <label htmlFor="cod" className="text-gray-700">Cash on Delivery</label>
+        </div>
+      </div>
     </div>
   </div>
 );
@@ -294,12 +326,13 @@ const SummaryItem = ({ label, value, isBold = false, isBlue = false }) => (
   </div>
 );
 
-const NavigationButtons = ({ onPrevious, onNext }) => (
+const NavigationButtons = ({ onPrevious, onNext, disablePrevious = false }) => (
   <div className="flex justify-between mt-6">
     {onPrevious && (
       <button
         onClick={onPrevious}
         className="bg-gray-600 text-white py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors duration-300 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+        disabled={disablePrevious}
       >
         Previous
       </button>
